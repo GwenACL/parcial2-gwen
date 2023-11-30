@@ -12,5 +12,6 @@ export function BusinessLogicException(message: string, type: number) {
     WRONG_SIZE,
     EMPTY_SLOGAN,
     TOO_SHORT,
+    INCORRECT_SIZE,
   }
   /* archivo: src/shared/errors/business-errors.ts */
