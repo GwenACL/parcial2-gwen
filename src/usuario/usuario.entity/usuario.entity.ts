@@ -1,8 +1,8 @@
 /* eslint-disable prettier/prettier */
-/* archivo: src/museum/museum.entity.ts */
-//import { ArtworkEntity } from '../../artwork/artwork.entity/artwork.entity';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-//import { ExhibitionEntity } from '../../exhibition/exhibition.entity/exhibition.entity';
+/* archivo: src/usuario/usuario.entity.ts */
+import { RedSocialEntity } from '../../red-social/red-social.entity/red-social.entity';
+import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { FotoEntity } from '../../foto/foto.entity/foto.entity';
 
 @Entity()
 export class UsuarioEntity {
@@ -14,13 +14,13 @@ export class UsuarioEntity {
    @Column()
    telefono: string;
 
-//    @OneToMany(() => ExhibitionEntity, exhibition => exhibition.museum)
-//    exhibitions: ExhibitionEntity[];
+   @ManyToOne(() => RedSocialEntity, red => red.usuarios)
+    red: RedSocialEntity;
 
-//    @OneToMany(() => ArtworkEntity, artwork => artwork.museum)
-//    artworks: ArtworkEntity[];
+    @OneToMany(() => FotoEntity, foto => foto.usuario)
+    fotos: FotoEntity[];
 
 }
 
 
-/* archivo: src/museum/museum.entity.ts */
+/* archivo: src/usuario/usuario.entity.ts */

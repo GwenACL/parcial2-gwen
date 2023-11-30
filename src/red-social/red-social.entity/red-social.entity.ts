@@ -1,8 +1,7 @@
 /* eslint-disable prettier/prettier */
-/* archivo: src/museum/museum.entity.ts */
-//import { ArtworkEntity } from '../../artwork/artwork.entity/artwork.entity';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-//import { ExhibitionEntity } from '../../exhibition/exhibition.entity/exhibition.entity';
+/* archivo: src/red-social/red-social.entity.ts */
+import { UsuarioEntity } from '../../usuario/usuario.entity/usuario.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class RedSocialEntity {
@@ -14,13 +13,9 @@ export class RedSocialEntity {
    @Column()
    slogan: string;
 
-//    @OneToMany(() => ExhibitionEntity, exhibition => exhibition.museum)
-//    exhibitions: ExhibitionEntity[];
-
-//    @OneToMany(() => ArtworkEntity, artwork => artwork.museum)
-//    artworks: ArtworkEntity[];
+    @OneToMany(() => UsuarioEntity, usuario => usuario.red)
+    usuarios: UsuarioEntity[];
 
 }
 
-
-/* archivo: src/museum/museum.entity.ts */
+/* archivo: src/red-social/red-social.entity.ts */

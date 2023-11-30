@@ -1,8 +1,8 @@
 /* eslint-disable prettier/prettier */
-/* archivo: src/museum/museum.entity.ts */
-//import { ArtworkEntity } from '../../artwork/artwork.entity/artwork.entity';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-//import { ExhibitionEntity } from '../../exhibition/exhibition.entity/exhibition.entity';
+/* archivo: src/foto/foto.entity.ts */
+import { UsuarioEntity } from '../../usuario/usuario.entity/usuario.entity';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { AlbumEntity } from '../../album/album.entity/album.entity';
 
 @Entity()
 export class FotoEntity {
@@ -18,13 +18,13 @@ export class FotoEntity {
    @Column()
    fecha: string;
 
-//    @OneToMany(() => ExhibitionEntity, exhibition => exhibition.museum)
-//    exhibitions: ExhibitionEntity[];
+   @ManyToOne(() => UsuarioEntity, usuario => usuario.fotos)
+   usuario: UsuarioEntity;
 
-//    @OneToMany(() => ArtworkEntity, artwork => artwork.museum)
-//    artworks: ArtworkEntity[];
+   @ManyToOne(() => AlbumEntity, album => album.fotos)
+   album: AlbumEntity;
 
 }
 
 
-/* archivo: src/museum/museum.entity.ts */
+/* archivo: src/foto/foto.entity.ts */
