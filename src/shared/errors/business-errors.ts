@@ -9,5 +9,8 @@ export function BusinessLogicException(message: string, type: number) {
     NOT_FOUND,
     INCORRECT_DATE,
     NOT_EMPTY,
+    WRONG_SIZE,
+    EMPTY_SLOGAN,
+    TOO_SHORT,
   }
   /* archivo: src/shared/errors/business-errors.ts */

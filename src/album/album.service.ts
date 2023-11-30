@@ -25,8 +25,8 @@ export class AlbumService {
    }
   
    async createAlbum(album: AlbumEntity): Promise<AlbumEntity> {
-        if (album.titulo == '')
-            throw new BusinessLogicException("The album with the given id was not found", BusinessError.EMPTY_TITLE);
+        if (album.titulo.length == 0)
+            throw new BusinessLogicException("The album should'nt have an empty title", BusinessError.EMPTY_TITLE);
         return await this.albumRepository.save(album);
    }
 
