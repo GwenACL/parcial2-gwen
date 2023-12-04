@@ -1,0 +1,260 @@
+{
+	"info": {
+		"_postman_id": "6418427c-a547-4167-a11f-e1b283bf53ea",
+		"name": "RedSocials",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30757420"
+	},
+	"item": [
+		{
+			"name": "Add a red",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()",
+							"pm.globals.set(\"red_id\", data.id);",
+							"",
+							"pm.test(\"Status code is 201\", function () {",
+							"   pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Tweeter\",\n    \"slogan\": \"La red con más drama que los Kardashians\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/redSocials",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"redSocials"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add a red",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"nombre\": \"Tweeter\",\n   \"slogan\": \"La red con más drama que los Kardashians\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/redSocials",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"redSocials"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": {{red_id}},\n    \"nombre\": \"Tweeter\",\n    \"slogan\": \"La red con más drama que los Kardashians\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Add a red with empty slogan",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"Red slogan shouldn't be empty\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Tweeter\",\n    \"slogan\": \"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/redSocials",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"redSocials"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add a red with empty slogan",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Tweeter\",\n    \"slogan\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/redSocials",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"redSocials"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"Red slogan shouldn't be empty\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Add a red with slogan too small",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"Red slogan should be at least 20 caracters long\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Tweeter\",\n    \"slogan\": \"The best\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/redSocials",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"redSocials"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add a red with empty slogan",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Tweeter\",\n    \"slogan\": \"The best\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/redSocials",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"redSocials"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"Red slogan should be at least 20 caracters long\"\n}"
+				}
+			]
+		}
+	]
+}
