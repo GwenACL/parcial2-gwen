@@ -10,9 +10,9 @@ export const TypeOrmTestingConfig = () => [
    type: 'sqlite',
    database: ':memory:',
    dropSchema: true,
-   entities: [UsuarioEntity, AlbumEntity, FotoEntity, RedSocialEntity],
+   entities: [AlbumEntity, FotoEntity, UsuarioEntity, RedSocialEntity],
    synchronize: true,
    keepConnectionAlive: true
  }),
- TypeOrmModule.forFeature([UsuarioEntity, AlbumEntity, FotoEntity, RedSocialEntity]),
+ TypeOrmModule.forFeature([AlbumEntity, FotoEntity, UsuarioEntity, RedSocialEntity]),
 ];

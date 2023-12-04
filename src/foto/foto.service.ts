@@ -45,7 +45,7 @@ export class FotoService {
        
        await this.fotoRepository.remove(foto);
        const idAlbum = foto.album.id;
-       const album: AlbumEntity = await this.albumRepository.findOne({where:{idAlbum}});
+       const album: AlbumEntity = await this.albumRepository.findOne({where:{id: idAlbum}});
        if (album.fotos.length == 1)
          await this.albumRepository.remove(album);
    }
