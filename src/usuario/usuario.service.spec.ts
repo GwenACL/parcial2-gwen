@@ -9,7 +9,7 @@ import { RedSocialEntity } from '../red-social/red-social.entity/red-social.enti
 
 import { faker } from '@faker-js/faker';
 
-describe('usuarioService', () => {
+describe('UsuarioService', () => {
   let service: UsuarioService;
   let repository: Repository<UsuarioEntity>;
   let usuarioList: UsuarioEntity[];
